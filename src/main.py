@@ -81,7 +81,7 @@ class SlotMachineApp:
                 self.result_label.config(text="", fg="red")
             self.spin_button.config(state=tk.NORMAL)
 
-    def open_config_panel(self):
+    def open_config_panel(self):     
         config_win = tk.Toplevel(self.root)
         config_win.title("Configure Symbol Probabilities")
         entries = {}
