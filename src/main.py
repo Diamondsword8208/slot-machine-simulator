@@ -19,6 +19,8 @@ class SlotMachineApp:
     def __init__(self, root):
         self.root = root
         self.root.title("Slot Machine Simulator")
+        self.root.geometry("400x400")  # Set a fixed window size (adjust as needed)
+        self.root.resizable(False, False)  # Make window fixed size
         self.symbol_probabilities = DEFAULT_PROBABILITIES.copy()
         self.score = 0
         
@@ -50,6 +52,7 @@ class SlotMachineApp:
 
     def spin_reels(self):
         # Disable spin button during animation
+        self.root.resizable(False, False)  # Prevent resizing while spinning
         self.spin_button.config(state=tk.DISABLED)
         self.result_label.config(text="", fg="red")
         self._spin_animation(0, [], 10)
@@ -80,6 +83,7 @@ class SlotMachineApp:
             else:
                 self.result_label.config(text="", fg="red")
             self.spin_button.config(state=tk.NORMAL)
+            self.root.resizable(False, False)  # Keep window fixed after spinning
 
     def open_config_panel(self):     
         config_win = tk.Toplevel(self.root)
